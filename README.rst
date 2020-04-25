@@ -1,5 +1,5 @@
 **TOMER: Temperature Optima for Enzymes with Resampling**
-========================================
+------------------------------------------------------------
 
 TOMER is a Python package for predicting the catalytic optimum temperature (Topt) of enzymes with machine learning. TOMER was trained with a bagging ensemble on a dataset of 2,917 proteins. To prevent large error on the prediction of higher temperature values, resampling strategies were applied to mitigate the effects of the imbalanced distribution of the dataset. Code for design of TOMER can be found `here <https://github.com/jafetgado/tomerdesign>`_.
 
@@ -29,7 +29,7 @@ Or from source
 
 
 Prerequisites
--------------
+----------------
 (version used in this work)
 
 1. Python 3 (3.6.6)
