@@ -7,7 +7,7 @@ Citation
 ----------
 If you find TOMER useful, please cite:
 
-Gado, J.E., Beckham, G.T., and Payne, C.M. (2020). Improving enzyme optimum temperature prediction with resampling strategies and ensemble learning.
+* Gado, J.E., Beckham, G.T., and Payne, C.M (2020). Improving enzyme optimum temperature prediction with resampling strategies and ensemble learning. *J. Chem. Inf. Model.* 60(8), 4098-4107.
 
 
 Installation
@@ -18,12 +18,13 @@ Install with pip
 
     pip install tomer
 
-Or from source
+Or from source (preferred). Using a virtual environment is recommended.
 
 .. code:: shell-session
 
     git clone https://github.com/jafetgado/resreg.git
     cd tomer
+    pip install -r requirements.txt
     python setup.py install
 
 
@@ -41,7 +42,7 @@ Prerequisites
 
 Usage
 -----
-Two main functions in TOMER for predicting the enzyme optimum temperature: ``pred_seq_topt``, which predicts optimum temperature of a single protein sequence (string), and ``pred_fasta_topt``, which predicts the optimum temperatures of protein sequences in a fasta file. To use these functions, you have to specify the optimal growth temperature (OGT) of the source organism of the protein. If the OGT is not known, a prediction may be obtained using `TOME <https://github.com/EngqvistLab/Tome>`_.
+There are two main functions in TOMER for predicting the enzyme optimum temperature: ``pred_seq_topt``, which predicts optimum temperature of a single protein sequence (string), and ``pred_fasta_topt``, which predicts the optimum temperatures of protein sequences in a fasta file. To use these functions, you have to specify the optimal growth temperature (OGT) of the source organism of the protein. If the OGT is not known, a prediction may be obtained using `TOME <https://github.com/EngqvistLab/Tome>`_.
 
 
 
@@ -56,18 +57,21 @@ Examples
                   DPVTKQFEIEVGVPPTSQLIKKELGLEKGSGEPKHNIVGNLTMEQVIKIAKMKRSQML
                   ALTLKAAAKEVIGTALSMGVTVEGKDPRIVQREIDEGVYDELFEKAEKE'''
     ogt = 95
-    y_pred, y_err = pred_seq_topt(sequence, ogt)
+    y_pred, y_err = tomer.pred_seq_topt(sequence, ogt)
+
     print(y_pred)   # predicted optimum temperature
     82.415
+
     print(y_err)    # Standard error of prediction (over 100 base learners in ensemble)
     2.0913518953060004
 
     # Predict optimum temperatures of sequences in fasta file
     fasta_file = 'test/sequences.fasta'
     ogt_file = 'test/ogts.txt'
-    df = pred_fasta_topt(fasta_file, ogt_file) # returns dataframe
+    df = tomer.pred_fasta_topt(fasta_file, ogt_file) # returns dataframe
+
     print(df)
-      Sequence    Topt   Std err
+       Sequence  Topt    Std err
     0   P43408  79.345   1.53561
     1   Q97X08  81.705  0.442442
     2   F8A9V0   76.37   1.16195

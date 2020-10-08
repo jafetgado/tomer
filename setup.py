@@ -5,7 +5,7 @@ with open('README.rst', 'r') as f:
 
 setuptools.setup(
 	name='tomer',
-	version='0.1',
+	version='0.2',
 	author='Japheth Gado',
 	author_email='japhethgado@gmail.com',
 	description='Predicting enzyme catalytic optimum temperature with ML',
@@ -21,7 +21,6 @@ setuptools.setup(
 		'Operating System :: OS Independent',
 		'Topic :: Scientific/Engineering'
 				],
-	install_requires=['numpy>=1.14.0', 'pandas>=0.24.0', 'scipy>=1.0.0', 
-					  'scikit-learn>=0.21.0', 'joblib>=0.13.0'],
+	install_requires=['numpy', 'pandas', 'scipy', 'scikit-learn', 'joblib'],
 	python_requires='>=3'
 		)
